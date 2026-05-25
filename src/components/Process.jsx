@@ -37,29 +37,22 @@ const Process = () => {
     ];
 
     return (
-        <section id="process" className="section-padding" style={{ background: 'rgba(0, 0, 0, 0.3)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <section id="process" className="section-padding process-section">
+            <div className="process-header">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="section-title"
-                    style={{ fontSize: '3rem', marginBottom: '1rem' }}
+                    className="process-title"
                 >
                     Our <span className="gradient-text">Process</span>
                 </motion.h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p className="process-desc">
                     A proven methodology that delivers exceptional results every time. From concept to launch and beyond.
                 </p>
             </div>
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '2rem',
-                maxWidth: '1200px',
-                margin: '0 auto'
-            }}>
+            <div className="process-grid">
                 {steps.map((step, index) => (
                     <motion.div
                         key={index}
@@ -67,48 +60,18 @@ const Process = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.15, duration: 0.6 }}
-                        style={{
-                            position: 'relative',
-                            padding: '2.5rem',
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            borderRadius: '24px',
-                            border: '1px solid var(--border)',
-                        }}
+                        className="process-card"
                     >
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '-15px',
-                                right: '20px',
-                                fontSize: '4rem',
-                                fontWeight: 'bold',
-                                background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent',
-                                opacity: 0.2,
-                            }}
-                        >
+                        <div className="process-number">
                             {step.number}
                         </div>
 
-                        <div
-                            style={{
-                                width: '60px',
-                                height: '60px',
-                                borderRadius: '50%',
-                                background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginBottom: '1.5rem',
-                                color: 'white'
-                            }}
-                        >
+                        <div className="process-icon-wrapper">
                             {step.icon}
                         </div>
 
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{step.title}</h3>
-                        <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>{step.description}</p>
+                        <h3 className="process-card-title">{step.title}</h3>
+                        <p className="process-card-desc">{step.description}</p>
                     </motion.div>
                 ))}
             </div>

@@ -120,46 +120,31 @@ const Portfolio = () => {
 
     return (
         <section id="portfolio" className="section-padding">
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div className="portfolio-header">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="section-title"
-                    style={{ fontSize: '3rem', marginBottom: '1rem' }}
+                    className="portfolio-title"
                 >
                     Our <span className="gradient-text">Portfolio</span>
                 </motion.h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p className="portfolio-desc">
                     Success stories with interactive effects. Hover to explore our best work!
                 </p>
             </div>
 
-            <div
-                ref={gridRef}
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                    gap: '2rem',
-                    maxWidth: '1400px',
-                    margin: '0 auto'
-                }}
-            >
+            <div ref={gridRef} className="portfolio-grid">
                 {projects.map((project, index) => (
                     <motion.div
                         key={index}
-                        className="magic-bento-card magic-bento-card--border-glow particle-container"
+                        className="magic-bento-card magic-bento-card--border-glow particle-container portfolio-card"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         style={{
-                            position: 'relative',
-                            overflow: 'hidden',
-                            borderRadius: '24px',
-                            border: '1px solid var(--border-color)',
                             background: project.color,
-                            cursor: 'pointer',
                             '--glow-x': '50%',
                             '--glow-y': '50%',
                             '--glow-intensity': '0',
@@ -185,83 +170,44 @@ const Portfolio = () => {
                     >
                         {/* Gradient Header */}
                         <div
-                            style={{
-                                height: '150px',
-                                background: project.gradient,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                position: 'relative'
-                            }}
+                            className="card-header"
+                            style={{ background: project.gradient }}
                         >
                             <motion.div
                                 whileHover={{ scale: 1.1, rotate: 15 }}
-                                style={{
-                                    width: '60px',
-                                    height: '60px',
-                                    background: 'rgba(255, 255, 255, 0.3)',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    backdropFilter: 'blur(10px)'
-                                }}
+                                className="card-icon"
                             >
                                 <ExternalLink size={28} color="white" />
                             </motion.div>
                         </div>
 
                         {/* Content */}
-                        <div style={{ padding: '2rem' }}>
-                            <div style={{
-                                fontSize: '0.85rem',
-                                color: 'var(--primary)',
-                                fontWeight: '600',
-                                marginBottom: '0.5rem',
-                                textTransform: 'uppercase',
-                                letterSpacing: '1px'
-                            }}>
+                        <div className="card-content">
+                            <div className="card-category">
                                 {project.category}
                             </div>
 
-                            <h3 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'white' }}>
+                            <h3 className="card-title">
                                 {project.title}
                             </h3>
-                            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                            <p className="card-desc">
                                 {project.description}
                             </p>
 
                             {/* Stats */}
-                            <div style={{
-                                padding: '1.25rem',
-                                background: 'rgba(99, 102, 241, 0.1)',
-                                borderRadius: '16px',
-                                marginBottom: '1.5rem',
-                                textAlign: 'center',
-                                border: '1px solid rgba(99, 102, 241, 0.3)'
-                            }}>
-                                <div className="gradient-text" style={{ fontSize: '2.5rem', fontWeight: 'bold' }}>
+                            <div className="card-stats">
+                                <div className="gradient-text stat-metric">
                                     {project.stats.metric}
                                 </div>
-                                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                                <div className="stat-label-small">
                                     {project.stats.label}
                                 </div>
                             </div>
 
                             {/* Tags */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1rem' }}>
+                            <div className="card-tags">
                                 {project.tags.map((tag, idx) => (
-                                    <span
-                                        key={idx}
-                                        style={{
-                                            padding: '0.35rem 0.85rem',
-                                            background: 'rgba(255, 255, 255, 0.05)',
-                                            borderRadius: '8px',
-                                            fontSize: '0.8rem',
-                                            border: '1px solid var(--border-color)',
-                                            color: 'white'
-                                        }}
-                                    >
+                                    <span key={idx} className="card-tag">
                                         {tag}
                                     </span>
                                 ))}
@@ -270,12 +216,7 @@ const Portfolio = () => {
                             {/* Arrow */}
                             <motion.div
                                 whileHover={{ x: 5, y: -5 }}
-                                style={{
-                                    position: 'absolute',
-                                    bottom: '2rem',
-                                    right: '2rem',
-                                    color: 'var(--primary)'
-                                }}
+                                className="card-arrow"
                             >
                                 <ArrowUpRight size={24} />
                             </motion.div>

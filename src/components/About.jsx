@@ -36,46 +36,25 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="glass"
-                style={{
-                    margin: '0 5%',
-                    borderRadius: '40px',
-                    padding: '4rem 2rem'
-                }}
+                className="glass stats-container"
             >
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '4rem',
-                    textAlign: 'center'
-                }}>
+                <div className="stats-grid">
                     {stats.map((stat, index) => (
                         <motion.div
                             key={index}
+                            className="stat-card"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <div
-                                style={{
-                                    width: '60px',
-                                    height: '60px',
-                                    background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    margin: '0 auto 1rem',
-                                    color: 'white'
-                                }}
-                            >
+                            <div className="stat-icon-wrapper">
                                 {stat.icon}
                             </div>
-                            <h2 className="gradient-text" style={{ fontSize: '3.5rem', marginBottom: '0.5rem' }}>
+                            <h2 className="gradient-text stat-number">
                                 {stat.number}
                             </h2>
-                            <p style={{ color: 'var(--text-secondary)', fontWeight: '500' }}>
+                            <p className="stat-label">
                                 {stat.label}
                             </p>
                         </motion.div>
@@ -84,36 +63,20 @@ const About = () => {
             </motion.div>
 
             {/* About Content */}
-            <div style={{
-                maxWidth: '1200px',
-                margin: '6rem auto 0',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '4rem',
-                alignItems: 'center'
-            }}>
+            <div className="about-content-grid">
                 <motion.div
+                    className="about-text"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>
+                    <h2 className="about-title">
                         About <span className="gradient-text">BIXSOL</span>
                     </h2>
-                    <p style={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '1.1rem',
-                        lineHeight: '1.8',
-                        marginBottom: '1.5rem'
-                    }}>
+                    <p className="about-desc">
                         BIXSOL is a full-service digital marketing and web development agency dedicated to helping businesses thrive in the digital age. Founded with a vision to make premium digital services accessible to businesses of all sizes.
                     </p>
-                    <p style={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '1.1rem',
-                        lineHeight: '1.8',
-                        marginBottom: '2rem'
-                    }}>
+                    <p className="about-desc">
                         Our team of experienced designers, developers, marketers, and strategists work together to create integrated solutions that drive real business results. From startups to established enterprises, we've helped over 50 businesses achieve their digital goals.
                     </p>
                     <motion.button
@@ -126,34 +89,25 @@ const About = () => {
                 </motion.div>
 
                 <motion.div
+                    className="values-grid"
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    style={{
-                        display: 'grid',
-                        gap: '1.5rem'
-                    }}
                 >
                     {values.map((value, index) => (
                         <motion.div
                             key={index}
+                            className="value-card"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ x: 10 }}
-                            style={{
-                                padding: '1.75rem',
-                                background: 'rgba(255, 255, 255, 0.03)',
-                                borderRadius: '20px',
-                                border: '1px solid var(--border)',
-                                borderLeft: '4px solid var(--primary)'
-                            }}
                         >
-                            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--primary)' }}>
+                            <h3 className="value-title">
                                 {value.title}
                             </h3>
-                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                            <p className="value-desc">
                                 {value.description}
                             </p>
                         </motion.div>

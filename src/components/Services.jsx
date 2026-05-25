@@ -148,54 +148,34 @@ const ServicesWithMagicBento = () => {
 
     return (
         <section id="services" className="services section-padding">
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div className="services-header">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="section-title"
-                    style={{ fontSize: '3rem', marginBottom: '1rem' }}
+                    className="services-title"
                 >
                     Our <span className="gradient-text">Services</span>
                 </motion.h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p className="services-desc">
                     Comprehensive digital services with interactive effects. Hover over cards to experience the magic!
                 </p>
             </div>
 
-            <div
-                ref={gridRef}
-                className="services-grid"
-                style={{
-                    display: 'grid',
-                    gap: '1.5rem',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    maxWidth: '1400px',
-                    margin: '0 auto'
-                }}
-            >
+            <div ref={gridRef} className="services-grid">
                 {services.map((service, index) => {
                     const IconComponent = service.icon;
 
                     return (
                         <motion.div
                             key={index}
-                            className="magic-bento-card magic-bento-card--border-glow particle-container"
+                            className="magic-bento-card magic-bento-card--border-glow particle-container service-card"
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             style={{
                                 backgroundColor: service.color,
-                                border: '1px solid var(--border-color)',
-                                borderRadius: '20px',
-                                padding: '2rem',
-                                position: 'relative',
-                                overflow: 'hidden',
-                                minHeight: '280px',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'space-between',
                                 '--glow-x': '50%',
                                 '--glow-y': '50%',
                                 '--glow-intensity': '0',
@@ -225,64 +205,26 @@ const ServicesWithMagicBento = () => {
                             }}
                         >
                             <div>
-                                <div
-                                    className="magic-bento-card__header"
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
-                                        marginBottom: '1.5rem'
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            width: '50px',
-                                            height: '50px',
-                                            borderRadius: '12px',
-                                            background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            color: 'white'
-                                        }}
-                                    >
+                                <div className="service-card-header">
+                                    <div className="service-icon-wrapper">
                                         <IconComponent size={24} />
                                     </div>
-                                    <div
-                                        className="magic-bento-card__label"
-                                        style={{
-                                            fontSize: '0.85rem',
-                                            color: 'var(--primary)',
-                                            fontWeight: '600',
-                                            textTransform: 'uppercase',
-                                            letterSpacing: '1px'
-                                        }}
-                                    >
+                                    <div className="service-label">
                                         {service.label}
                                     </div>
                                 </div>
 
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: 'white' }}>
+                                <h3 className="service-card-title">
                                     {service.title}
                                 </h3>
-                                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.25rem', lineHeight: '1.6' }}>
+                                <p className="service-card-desc">
                                     {service.description}
                                 </p>
                             </div>
 
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                            <div className="service-tags">
                                 {service.features.map((feature, idx) => (
-                                    <span
-                                        key={idx}
-                                        style={{
-                                            padding: '0.35rem 0.75rem',
-                                            background: 'rgba(99, 102, 241, 0.1)',
-                                            borderRadius: '8px',
-                                            fontSize: '0.8rem',
-                                            color: 'var(--primary)',
-                                            border: '1px solid rgba(99, 102, 241, 0.3)'
-                                        }}
-                                    >
+                                    <span key={idx} className="service-tag">
                                         {feature}
                                     </span>
                                 ))}

@@ -13,7 +13,7 @@ const Testimonials = () => {
             avatar: "RK"
         },
         {
-            name: "Priya Sharma",
+            name: "Priya",
             role: "Marketing Director",
             company: "Fashion Retail Chain",
             rating: 5,
@@ -21,7 +21,7 @@ const Testimonials = () => {
             avatar: "PS"
         },
         {
-            name: "Mohammed Ali",
+            name: "Mohammed ",
             role: "Founder",
             company: "Local Restaurant Chain",
             rating: 5,
@@ -29,7 +29,7 @@ const Testimonials = () => {
             avatar: "MA"
         },
         {
-            name: "Anita Desai",
+            name: "Anita ",
             role: "COO, HealthCare Solutions",
             company: "Healthcare Technology",
             rating: 5,
@@ -37,7 +37,7 @@ const Testimonials = () => {
             avatar: "AD"
         },
         {
-            name: "Vikram Patel",
+            name: "Vikram ",
             role: "Director",
             company: "Education Institute",
             rating: 5,
@@ -45,7 +45,7 @@ const Testimonials = () => {
             avatar: "VP"
         },
         {
-            name: "Sneha Reddy",
+            name: "Sneha ",
             role: "Founder & CEO",
             company: "Beauty & Wellness",
             rating: 5,
@@ -55,29 +55,23 @@ const Testimonials = () => {
     ];
 
     return (
-        <section id="testimonials" className="section-padding" style={{ background: 'rgba(0, 0, 0, 0.3)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+
+        <section id="testimonials" className="section-padding testimonials-section">
+            <div className="testimonials-header">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="section-title"
-                    style={{ fontSize: '3rem', marginBottom: '1rem' }}
+                    className="testimonials-title"
                 >
                     Client <span className="gradient-text">Testimonials</span>
                 </motion.h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+                <p className="testimonials-desc">
                     Don't just take our word for it. Here's what our clients have to say about working with BIXSOL.
                 </p>
             </div>
 
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                gap: '2rem',
-                maxWidth: '1400px',
-                margin: '0 auto'
-            }}>
+            <div className="testimonials-grid">
                 {testimonials.map((testimonial, index) => (
                     <motion.div
                         key={index}
@@ -86,68 +80,36 @@ const Testimonials = () => {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ y: -5 }}
-                        style={{
-                            position: 'relative',
-                            padding: '2.5rem',
-                            background: 'rgba(255, 255, 255, 0.03)',
-                            borderRadius: '24px',
-                            border: '1px solid var(--border)',
-                        }}
+                        className="testimonial-card"
                     >
                         {/* Quote Icon */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '20px',
-                                right: '20px',
-                                opacity: 0.1
-                            }}
-                        >
+                        <div className="quote-icon-wrapper">
                             <Quote size={60} color="var(--primary)" />
                         </div>
 
                         {/* Rating */}
-                        <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1.5rem' }}>
+                        <div className="testimonial-rating">
                             {[...Array(testimonial.rating)].map((_, i) => (
                                 <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
                             ))}
                         </div>
 
                         {/* Testimonial Text */}
-                        <p style={{
-                            color: 'var(--text-primary)',
-                            fontSize: '1.05rem',
-                            lineHeight: '1.7',
-                            marginBottom: '2rem',
-                            fontStyle: 'italic'
-                        }}>
+                        <p className="testimonial-text">
                             "{testimonial.text}"
                         </p>
 
                         {/* Author Info */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                            <div
-                                style={{
-                                    width: '55px',
-                                    height: '55px',
-                                    borderRadius: '50%',
-                                    background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontSize: '1.25rem',
-                                    fontWeight: 'bold',
-                                    color: 'white'
-                                }}
-                            >
+                        <div className="author-info">
+                            <div className="author-avatar">
                                 {testimonial.avatar}
                             </div>
-                            <div>
-                                <h4 style={{ fontSize: '1.1rem', marginBottom: '0.25rem' }}>{testimonial.name}</h4>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                            <div className="author-details">
+                                <h4 className="author-name">{testimonial.name}</h4>
+                                <p className="author-role">
                                     {testimonial.role}
                                 </p>
-                                <p style={{ color: 'var(--primary)', fontSize: '0.85rem', fontWeight: '600' }}>
+                                <p className="author-company">
                                     {testimonial.company}
                                 </p>
                             </div>
@@ -161,28 +123,18 @@ const Testimonials = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                style={{
-                    marginTop: '4rem',
-                    padding: '2.5rem',
-                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1))',
-                    borderRadius: '24px',
-                    border: '1px solid rgba(99, 102, 241, 0.3)',
-                    textAlign: 'center',
-                    maxWidth: '800px',
-                    margin: '4rem auto 0',
-                }}
+                className="trust-badge"
             >
-                <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
+                <h3 className="trust-badge-title">
                     Join <span className="gradient-text">50+ Happy Clients</span>
                 </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                <p className="trust-badge-desc">
                     Start your journey to digital success today. Let's create something amazing together.
                 </p>
                 <motion.button
-                    className="btn btn-primary"
+                    className="btn btn-primary trust-badge-btn"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}
                 >
                     Get Started Now
                 </motion.button>

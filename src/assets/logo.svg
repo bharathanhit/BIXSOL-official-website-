@@ -1,0 +1,19 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo_bg_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Icon Part: Stylized B -->
+  <rect x="5" y="5" width="50" height="50" rx="12" fill="#030712" stroke="url(#logo_bg_grad)" stroke-width="1.5"/>
+  <path d="M20 18H34C38 18 40 20 40 23C40 25.5 38.5 27 36 27.5C39 28.5 41 30.5 41 34C41 38 38.5 40 34 40H20V18ZM26 22V26H32C34 26 35 25.5 35 24C35 22.5 34 22 32 22H26ZM26 31V36H34C36 36 37 35.5 37 33.5C37 31.5 36 31 34 31H26Z" fill="white"/>
+  <rect x="20" y="18" width="2.5" height="22" rx="1" fill="url(#logo_bg_grad)" />
+
+  <!-- Text Part -->
+  <text x="65" y="42" fill="url(#logo_bg_grad)" font-family="Outfit, sans-serif" font-size="32" font-weight="900" style="letter-spacing: 1px;">BIXSOL</text>
+  
+  <!-- SEO Context -->
+  <title>BIXSOL Digital Logo</title>
+</svg>
