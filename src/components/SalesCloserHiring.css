@@ -486,6 +486,8 @@
 .sc-form-group input,
 .sc-form-group select,
 .sc-form-group textarea {
+    width: 100%;
+    max-width: 100%;
     padding: 0.75rem;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
@@ -819,6 +821,10 @@
     .sc-footer-cta {
         padding: 3rem 1rem;
     }
+
+    .sc-container {
+        padding: 0 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -872,5 +878,9 @@
 
     .sc-form-section-title {
         font-size: 1rem;
+    }
+
+    .sc-container {
+        padding: 0 0.5rem;
     }
 }
