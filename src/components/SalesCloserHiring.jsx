@@ -115,6 +115,14 @@ const SalesCloserHiring = () => {
                 position: 'Sales Closer'
             });
 
+            // Track Lead submission with Meta Pixel
+            if (window.fbq) {
+                window.fbq('track', 'Lead', {
+                    content_name: 'Sales Closer Application',
+                    status: 'submitted'
+                });
+            }
+
             setSubmitted(true);
             setFormData({
                 name: '',

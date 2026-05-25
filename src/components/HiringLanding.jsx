@@ -112,6 +112,15 @@ const HiringLanding = () => {
                 status: 'pending'
             });
 
+            // Track Lead submission with Meta Pixel
+            if (window.fbq) {
+                window.fbq('track', 'Lead', {
+                    content_name: 'Hiring Landing Application',
+                    position: formData.position,
+                    status: 'submitted'
+                });
+            }
+
             setSubmitted(true);
             setFormData({
                 name: '',
