@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Target, Zap, CheckCircle, AlertCircle, Loader2, Upload, Send, TrendingUp, Users, Award } from 'lucide-react';
 import { db } from '../firebase';
@@ -115,12 +116,35 @@ const SalesCloserHiring = () => {
                 position: 'Sales Closer'
             });
 
-            // Track Lead submission with Meta Pixel
+            // Track Lead submission with Meta Pixel (browser-side)
             if (window.fbq) {
                 window.fbq('track', 'Lead', {
                     content_name: 'Sales Closer Application',
                     status: 'submitted'
                 });
+            }
+
+            // Track Lead submission with Meta Conversions API (server-side)
+            try {
+                await fetch('/.netlify/functions/track-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        eventName: 'Lead',
+                        userData: {
+                            email: formData.email,
+                            phone: formData.phone,
+                            sourceUrl: window.location.href
+                        },
+                        customData: {
+                            content_name: 'Sales Closer Application',
+                            event_source: 'crm',
+                            lead_event_source: 'Sales Closer Hiring Page'
+                        }
+                    })
+                });
+            } catch (capiErr) {
+                console.warn('Meta CAPI call failed (non-critical):', capiErr.message);
             }
 
             setSubmitted(true);
@@ -179,12 +203,17 @@ const SalesCloserHiring = () => {
                     <div className="sc-logo">
                         <img src="/logo.jpg" alt="BIXSOL" />
                     </div>
-                    <button 
-                        className="sc-nav-btn"
-                        onClick={() => document.getElementById('apply-form').scrollIntoView({ behavior: 'smooth' })}
-                    >
-                        Apply Now
-                    </button>
+                    <div className="sc-nav-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                        <Link to="/portal" className="sc-nav-portal-btn">
+                            Agent Login
+                        </Link>
+                        <button 
+                            className="sc-nav-btn"
+                            onClick={() => document.getElementById('apply-form').scrollIntoView({ behavior: 'smooth' })}
+                        >
+                            Apply Now
+                        </button>
+                    </div>
                 </div>
             </nav>
 
@@ -387,6 +416,32 @@ const SalesCloserHiring = () => {
                             <div className="commission-cell">₹75,000+</div>
                         </div>
                     </motion.div>
+                </div>
+            </section>
+
+            {/* Agent Portal Callout */}
+            <section className="sc-portal-callout-sec" style={{ padding: '3rem 2rem 0', background: 'linear-gradient(135deg, #fef3c7 0%, #fef3c7 100%)' }}>
+                <div className="sc-container">
+                    <div className="sc-portal-callout-card" style={{
+                        background: 'rgba(255, 255, 255, 0.95)',
+                        border: '2px solid #ef4444',
+                        borderRadius: '16px',
+                        padding: '2.5rem 2rem',
+                        textAlign: 'center',
+                        boxShadow: '0 10px 30px rgba(239, 68, 68, 0.1)',
+                        maxWidth: '900px',
+                        margin: '0 auto'
+                    }}>
+                        <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#1a1a1a', marginBottom: '0.75rem' }}>
+                            💼 Already a BIXSOL Sales Closer?
+                        </h3>
+                        <p style={{ fontSize: '1rem', color: '#4b5563', marginBottom: '1.5rem', lineHeight: '1.6', maxWidth: '700px', margin: '0 auto 1.5rem' }}>
+                            Access your individual sales portal to view your assigned cold call leads, track daily call queues, use WhatsApp/email template tools, and log call outcomes in real-time.
+                        </p>
+                        <Link to="/portal" className="sc-hero-cta" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.75rem' }}>
+                            Access Salesperson Portal →
+                        </Link>
+                    </div>
                 </div>
             </section>
 

@@ -16,6 +16,7 @@ import Contact from './components/Contact';
 import Features from './components/Features';
 import Footer from './components/Footer';
 import AdminPanel from './components/AdminPanel';
+import SalesPortal from './components/SalesPortal';
 import './App.css';
 
 const Home = ({ onLaunchClick }) => (
@@ -53,6 +54,9 @@ const App = () => {
         
         {/* Admin Route */}
         <Route path="/admin" element={<AdminPanel />} />
+
+        {/* Sales Portal - Individual Salesperson Dashboard */}
+        <Route path="/portal" element={<SalesPortal />} />
 
         {/* Dedicated Hiring Pages - Full Page, No Main Navbar/Footer */}
         <Route path="/hiring" element={<Hiring />} />

@@ -169,13 +169,36 @@ const Hiring = () => {
                 status: 'pending'
             });
 
-            // Track Lead submission with Meta Pixel
+            // Track Lead submission with Meta Pixel (browser-side)
             if (window.fbq) {
                 window.fbq('track', 'Lead', {
                     content_name: 'Hiring Page Application',
                     position: formData.position,
                     status: 'submitted'
                 });
+            }
+
+            // Track Lead submission with Meta Conversions API (server-side)
+            try {
+                await fetch('/.netlify/functions/track-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        eventName: 'Lead',
+                        userData: {
+                            email: formData.email,
+                            phone: formData.phone,
+                            sourceUrl: window.location.href
+                        },
+                        customData: {
+                            content_name: 'Hiring Page Application',
+                            event_source: 'crm',
+                            lead_event_source: 'Hiring Page'
+                        }
+                    })
+                });
+            } catch (capiErr) {
+                console.warn('Meta CAPI call failed (non-critical):', capiErr.message);
             }
 
             setSubmitted(true);
