@@ -17,6 +17,7 @@ import Features from './components/Features';
 import Footer from './components/Footer';
 import AdminPanel from './components/AdminPanel';
 import SalesPortal from './components/SalesPortal';
+import BharathanPortfolio from './components/BharathanPortfolio';
 import './App.css';
 
 const Home = ({ onLaunchClick }) => (
@@ -62,6 +63,10 @@ const App = () => {
         <Route path="/hiring" element={<Hiring />} />
         <Route path="/hiring-landing" element={<HiringLanding />} />
         <Route path="/sales-closer" element={<SalesCloserHiring />} />
+
+        {/* Dedicated Bharathan Portfolio Page - Full Page with Motion & Admin Highlights */}
+        <Route path="/bharathan-portfolio" element={<BharathanPortfolio />} />
+        <Route path="/bharathan" element={<BharathanPortfolio />} />
       </Routes>
     </Router>
   );

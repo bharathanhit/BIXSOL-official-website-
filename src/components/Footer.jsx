@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, Facebook, ChevronRight } from 'lucide-react';
 import Logo from './Logo';
 
